@@ -1,0 +1,7 @@
+file_format: "1"
+id: high-resolution-scroll-wheel
+name: high-resolution-scroll-wheel
+type: shield
+requires: [seeeduino_xiao_ble]
+features:
+  - keys
