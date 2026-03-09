@@ -10,6 +10,8 @@
     as5600: as5600@36{
         compatible = "zmk,input-ams-as5600";
         reg = <0x36>;
+        vdd-gpios = <&xiao_d 0 GPIO_ACTIVE_LOW>;  // D0 powers AS5600
+
         status = "okay";
     };
 };
