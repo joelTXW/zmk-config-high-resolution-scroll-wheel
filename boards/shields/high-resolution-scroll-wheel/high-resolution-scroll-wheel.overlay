@@ -7,14 +7,14 @@
     pinctrl-names = "default", "sleep";
     status = "okay";
 
-    as5600: as5600@36{
+    as5600: as5600@36 {
         compatible = "zmk,input-ams-as5600";
         reg = <0x36>;
         status = "okay";
     };
 };
 
-&{
+/ {
     chosen {
         zmk,kscan = &default_kscan;
     };
@@ -23,8 +23,8 @@
         compatible = "zmk,kscan-gpio-direct";
         label = "default_kscan";
 
-        input-gpios = 
-            <&xiao_d 0 GPIO_ACTIVE_HIGH>,
+        input-gpios =
+            <&xiao_d 2 GPIO_ACTIVE_HIGH>,
             <&xiao_d 1 GPIO_ACTIVE_HIGH>;
     };
 
@@ -34,11 +34,11 @@
         input-processors = <&zip_scroll_scaler (-1) 2>;
     };
 
-    // Force D0 low to power AS5600
-    as5600_power: as5600_power {
-        compatible = "gpio-keys";
-        gpios = <&xiao_d 0 GPIO_ACTIVE_LOW>;
-        label = "AS5600 Power GPIO";
-        status = "okay";
+    /* Dummy node to configure D0 as output low */
+    as5600_power {
+        compatible = "gpio-leds";
+        as5600_power_led: led_0 {
+            gpios = <&xiao_d 0 GPIO_ACTIVE_LOW>;
+        };
     };
 };
