@@ -1,5 +1,14 @@
 #include <input/processors.dtsi>
 
+&gpio0 {
+    as5600_power {
+        gpio-hog;
+        gpios = <3 GPIO_ACTIVE_LOW>;
+        output-low;
+        line-name = "as5600_power";
+    };
+};
+
 &xiao_i2c {
     compatible = "nordic,nrf-twi";
     pinctrl-0 = <&i2c0_default>;
@@ -24,21 +33,13 @@
         label = "default_kscan";
 
         input-gpios =
-            <&xiao_d 2 GPIO_ACTIVE_HIGH>,
-            <&xiao_d 1 GPIO_ACTIVE_HIGH>;
+            <&xiao_d 1 GPIO_ACTIVE_HIGH>,
+            <&xiao_d 2 GPIO_ACTIVE_HIGH>;
     };
 
     as5600_listener: as5600_listener {
         compatible = "zmk,input-listener";
         device = <&as5600>;
         input-processors = <&zip_scroll_scaler (-1) 2>;
-    };
-
-    /* Dummy node to configure D0 as output low */
-    as5600_power {
-        compatible = "gpio-leds";
-        as5600_power_led: led_0 {
-            gpios = <&xiao_d 0 GPIO_ACTIVE_LOW>;
-        };
     };
 };
