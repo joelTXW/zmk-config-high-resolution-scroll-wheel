@@ -1,6 +1,6 @@
 if SHIELED_HIGH_RESOLUTION_SCROLL_WHEEL
 
 config ZMK_KEYBOARD_NAME
-    default "High Res Scroll"
+    default "High Resolution Scroll"
 
 endif
