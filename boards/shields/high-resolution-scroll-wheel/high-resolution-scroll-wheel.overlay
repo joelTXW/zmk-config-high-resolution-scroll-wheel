@@ -1,13 +1,5 @@
 #include <input/processors.dtsi>
 
-&gpio0 {
-    as5600_power {
-        gpio-hog;
-        gpios = <3 GPIO_ACTIVE_LOW>;
-        output-low;
-        line-name = "as5600_power";
-    };
-};
 
 &xiao_i2c {
     compatible = "nordic,nrf-twi";
@@ -41,5 +33,16 @@
         compatible = "zmk,input-listener";
         device = <&as5600>;
         input-processors = <&zip_scroll_scaler (-1) 2>;
+    };
+
+    leds 
+    {
+        compatible = "gpio-leds";
+        d0_enable: led_0 
+        {
+            gpios = <&xiao_d 0 GPIO_ACTIVE_LOW>;   // D0, active low
+            label = "D0 enable pin";
+            default-state = "on";                  // "on" means drive active level → low
+        };
     };
 };
