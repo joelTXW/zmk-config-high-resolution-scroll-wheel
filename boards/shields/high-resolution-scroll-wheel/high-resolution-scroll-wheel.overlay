@@ -3,7 +3,7 @@
 &gpio0 {
     as5600_power {
         gpio-hog;
-        gpios = <2 GPIO_ACTIVE_LOW>;
+        gpios = <0 GPIO_ACTIVE_LOW>;
         output-low;
         line-name = "as5600_power";
     };
