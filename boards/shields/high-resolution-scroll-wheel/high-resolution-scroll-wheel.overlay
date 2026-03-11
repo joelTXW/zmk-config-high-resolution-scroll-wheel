@@ -1,22 +1,9 @@
 #include <input/processors.dtsi>
 
-&led0 {
-    status = "disabled";
-};
-
 &gpio0 {
     as5600_power {
-        gpio-hog;
-        gpios = <2 GPIO_ACTIVE_LOW>;
-        output-low;
+        gpios = <2 GPIO_ACTIVE_LOW>;   /* P0.02, drives MOSFET gate */
         line-name = "as5600_power";
-    };
-
-    as5600_led {
-        gpio-hog;
-        gpios = <30 GPIO_ACTIVE_LOW>;
-        output-low;
-        line-name = "as5600_led";
     };
 };
 
