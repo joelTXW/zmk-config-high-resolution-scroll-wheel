@@ -3,9 +3,16 @@
 &gpio0 {
     as5600_power {
         gpio-hog;
-        gpios = <2 GPIO_ACTIVE_LOW>, <30 GPIO_ACTIVE_LOW>;   // include the phandle
+        gpios = <2 GPIO_ACTIVE_LOW>;
         output-low;
         line-name = "as5600_power";
+    };
+
+    as5600_led {
+        gpio-hog;
+        gpios = <30 GPIO_ACTIVE_LOW>;
+        output-low;
+        line-name = "as5600_led";
     };
 };
 
