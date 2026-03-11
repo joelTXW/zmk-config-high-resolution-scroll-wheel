@@ -24,19 +24,6 @@
 };
 
 / {
-    chosen {
-        zmk,kscan = &default_kscan;
-    };
-
-    default_kscan: kscan {
-        compatible = "zmk,kscan-gpio-direct";
-        label = "default_kscan";
-
-        input-gpios =
-            <&xiao_d 15 GPIO_ACTIVE_HIGH>,
-            <&xiao_d 14 GPIO_ACTIVE_HIGH>;
-    };
-
     as5600_listener: as5600_listener {
         compatible = "zmk,input-listener";
         device = <&as5600>;
