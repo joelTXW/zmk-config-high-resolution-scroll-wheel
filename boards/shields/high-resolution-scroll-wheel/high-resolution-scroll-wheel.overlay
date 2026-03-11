@@ -1,11 +1,5 @@
 #include <input/processors.dtsi>
 
-&gpio0 {
-    as5600_power {
-        gpios = <2 GPIO_ACTIVE_LOW>;   /* P0.02, drives MOSFET gate */
-        line-name = "as5600_power";
-    };
-};
 
 &xiao_i2c {
     compatible = "nordic,nrf-twi";
