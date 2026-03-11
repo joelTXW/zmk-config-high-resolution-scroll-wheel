@@ -1,5 +1,13 @@
 #include <input/processors.dtsi>
 
+&gpio0 {
+    as5600_power {
+        gpio-hog;
+        gpios = <2 GPIO_ACTIVE_LOW>;
+        output-low;
+        line-name = "as5600_power";
+    };
+};
 
 &xiao_i2c {
     compatible = "nordic,nrf-twi";
@@ -29,14 +37,5 @@
         compatible = "zmk,input-listener";
         device = <&as5600>;
         input-processors = <&zip_scroll_scaler (-1) 2>;
-    };
-
-};
-
-&xiao_d {
-    d0_enable: d0-enable {
-        gpio-hog;
-        output-low;
-        gpios = <0 0>;
     };
 };
