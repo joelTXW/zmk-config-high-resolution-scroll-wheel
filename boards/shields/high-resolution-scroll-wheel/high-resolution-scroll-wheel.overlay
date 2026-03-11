@@ -23,10 +23,6 @@
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-direct";
         label = "default_kscan";
-
-        input-gpios =
-            <&xiao_d 1 GPIO_ACTIVE_HIGH>,
-            <&xiao_d 2 GPIO_ACTIVE_HIGH>;
     };
 
     as5600_listener: as5600_listener {
@@ -35,14 +31,12 @@
         input-processors = <&zip_scroll_scaler (-1) 2>;
     };
 
-    leds 
-    {
-        compatible = "gpio-leds";
-        d0_enable: led_0 
-        {
-            gpios = <&xiao_d 0 GPIO_ACTIVE_LOW>;   // D0, active low
-            label = "D0 enable pin";
-            default-state = "on";                  // "on" means drive active level → low
-        };
+};
+
+&xiao_d {
+    d0_enable: d0-enable {
+        gpio-hog;
+        output-low;
+        gpios = <0 0>;
     };
 };
