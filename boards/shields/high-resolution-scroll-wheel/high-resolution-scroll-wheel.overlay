@@ -1,6 +1,3 @@
-#include <input/processors.dtsi>
-
-
 &xiao_i2c {
     compatible = "nordic,nrf-twi";
     pinctrl-0 = <&i2c0_default>;
@@ -32,6 +29,5 @@
     as5600_listener: as5600_listener {
         compatible = "zmk,input-listener";
         device = <&as5600>;
-        input-processors = <&zip_scroll_scaler (-1) 6>;
     };
 };
