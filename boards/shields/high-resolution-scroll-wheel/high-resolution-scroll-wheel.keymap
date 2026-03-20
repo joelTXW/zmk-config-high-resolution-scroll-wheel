@@ -29,7 +29,6 @@
         default_layer {
             bindings = <
                 &ht_bt BT_CLR_CMD BT_NXT_CMD
-                &out OUT_TOG
             >;
         };
     };
