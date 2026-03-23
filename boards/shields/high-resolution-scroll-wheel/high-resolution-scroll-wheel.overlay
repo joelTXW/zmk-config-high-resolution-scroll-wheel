@@ -31,6 +31,21 @@
     as5600_listener: as5600_listener {
         compatible = "zmk,input-listener";
         device = <&as5600>;
-        input-processors = <&zip_scroll_scaler (1) 4>;
+        input-processors = <&zip_scroll_scaler (1) 2>;
+
+        div4 {
+            layers = <1>;
+            input-processors = <&zip_scroll_scaler (1) 4>;
+        };
+
+        div8 {
+            layers = <2>;
+            input-processors = <&zip_scroll_scaler (1) 8>;
+        };
+
+        div16 {
+            layers = <3>;
+            input-processors = <&zip_scroll_scaler (1) 16>;
+        };
     };
 };

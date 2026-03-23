@@ -4,6 +4,11 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define SENS_DIV2 0
+#define SENS_DIV4 1
+#define SENS_DIV8 2
+#define SENS_DIV16 3
+
 / {
     behaviors {
         bt_one_param: bt_one_param {
@@ -14,21 +19,68 @@
             bindings = <&macro_param_1to1>, <&bt MACRO_PLACEHOLDER 0>;
         };
 
-        ht_bt: hold_tap_bt {
+        ht_sens_ble_reset: hold_tap_sens_ble_reset {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
+            flavor = "tap-preferred";
+            tapping-term-ms = <500>;
+            quick-tap-ms = <0>;
+            bindings = <&to>, <&bt_one_param>;
+        };
+
+        td_div2: tap_dance_div2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&bt_one_param>, <&bt_one_param>;
+            bindings = <&ht_sens_ble_reset SENS_DIV4 BT_CLR_ALL_CMD>, <&bt_one_param BT_NXT_CMD>;
+        };
+
+        td_div4: tap_dance_div4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <400>;
+            bindings = <&ht_sens_ble_reset SENS_DIV8 BT_CLR_ALL_CMD>, <&bt_one_param BT_NXT_CMD>;
+        };
+
+        td_div8: tap_dance_div8 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <400>;
+            bindings = <&ht_sens_ble_reset SENS_DIV16 BT_CLR_ALL_CMD>, <&bt_one_param BT_NXT_CMD>;
+        };
+
+        td_div16: tap_dance_div16 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <400>;
+            bindings = <&ht_sens_ble_reset SENS_DIV2 BT_CLR_ALL_CMD>, <&bt_one_param BT_NXT_CMD>;
         };
     };
     
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        sens_div2 {
             bindings = <
-                &ht_bt BT_CLR_CMD BT_NXT_CMD
+                &td_div2
+            >;
+        };
+
+        sens_div4 {
+            bindings = <
+                &td_div4
+            >;
+        };
+
+        sens_div8 {
+            bindings = <
+                &td_div8
+            >;
+        };
+
+        sens_div16 {
+            bindings = <
+                &td_div16
             >;
         };
     };
