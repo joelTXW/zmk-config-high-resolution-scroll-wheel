@@ -57,7 +57,11 @@ static int sensitivity_init(void) {
         // ZMK changed this API to have 'locking' parameter recently.
         // It appears the build server is using an older ZMK version.
         zmk_keymap_layer_to(saved_layer);
+    }
+    return 0;
+}
 
 SYS_INIT(sensitivity_init, APPLICATION, 99);
 
 #endif /* CONFIG_SETTINGS */
+
