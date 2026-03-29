@@ -1,0 +1,10 @@
+menu "HighRes Custom Features"
+
+config HIGHRES_PERSIST_SENSITIVITY_LAYER
+    bool "Persist sensitivity layer selection"
+    default y
+    depends on SETTINGS
+    help
+      Save and restore the selected sensitivity layer across reboots.
+
+endmenu

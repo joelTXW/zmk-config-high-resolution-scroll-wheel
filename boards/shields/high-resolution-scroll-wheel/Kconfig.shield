@@ -1,2 +1,2 @@
-config SHIELED_HIGH_RESOLUTION_SCROLL_WHEEL
+config SHIELD_HIGH_RESOLUTION_SCROLL_WHEEL
     def_bool $(shields_list_contains,high-resolution-scroll-wheel)
