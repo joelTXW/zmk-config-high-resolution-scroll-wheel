@@ -20,5 +20,5 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: high-resolution-scroll-wheel
+    shield: settings_reset
     snippet: zmk-usb-logging
