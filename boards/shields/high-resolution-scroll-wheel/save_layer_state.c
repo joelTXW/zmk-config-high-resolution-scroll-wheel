@@ -54,10 +54,9 @@ ZMK_SUBSCRIPTION(save_layer, zmk_layer_state_changed);
 static int sensitivity_init(void) {
     // Only apply if it's not default layer, as default layer is always on
     if (saved_layer > 0 && saved_layer <= 3) {
-        zmk_keymap_layer_to(saved_layer, false);
-    }
-    return 0;
-}
+        // ZMK changed this API to have 'locking' parameter recently.
+        // It appears the build server is using an older ZMK version.
+        zmk_keymap_layer_to(saved_layer);
 
 SYS_INIT(sensitivity_init, APPLICATION, 99);
 
