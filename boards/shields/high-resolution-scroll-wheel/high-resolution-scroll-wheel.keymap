@@ -11,84 +11,49 @@
 
 / {
     behaviors {
-        bt_one_param: bt_one_param {
-            compatible = "zmk,behavior-macro-one-param";
-            wait-ms = <0>;
-            tap-ms = <0>;
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1>, <&bt MACRO_PLACEHOLDER 0>;
-        };
-
         bt_clr_all: bt_clr_all {
             compatible = "zmk,behavior-macro";
             wait-ms = <0>;
             tap-ms = <0>;
             #binding-cells = <0>;
-            bindings = <&bt_one_param BT_CLR_ALL_CMD>;
+            bindings = <&bt BT_CLR_ALL>;
+        };
+
+        ht_sens: hold_tap_sens {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <0>;
+            bindings = <&bt_clr_all>, <&to>;
         };
 
         td_div2: tap_dance_div2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&to SENS_DIV4>, <&bt_one_param BT_NXT_CMD>;
+            bindings = <&ht_sens 0 SENS_DIV4>, <&bt BT_NXT>;
         };
 
         td_div4: tap_dance_div4 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&to SENS_DIV8>, <&bt_one_param BT_NXT_CMD>;
+            bindings = <&ht_sens 0 SENS_DIV8>, <&bt BT_NXT>;
         };
 
         td_div8: tap_dance_div8 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&to SENS_DIV16>, <&bt_one_param BT_NXT_CMD>;
+            bindings = <&ht_sens 0 SENS_DIV16>, <&bt BT_NXT>;
         };
 
         td_div16: tap_dance_div16 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&to SENS_DIV2>, <&bt_one_param BT_NXT_CMD>;
-        };
-
-        ht_div2: hold_tap_div2 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <0>;
-            bindings = <&td_div2>, <&bt_clr_all>;
-        };
-
-        ht_div4: hold_tap_div4 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <0>;
-            bindings = <&td_div4>, <&bt_clr_all>;
-        };
-
-        ht_div8: hold_tap_div8 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <0>;
-            bindings = <&td_div8>, <&bt_clr_all>;
-        };
-
-        ht_div16: hold_tap_div16 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <0>;
-            bindings = <&td_div16>, <&bt_clr_all>;
+            bindings = <&ht_sens 0 SENS_DIV2>, <&bt BT_NXT>;
         };
     };
     
@@ -97,25 +62,25 @@
 
         sens_div2 {
             bindings = <
-                &ht_div2 0 0
+                &td_div2
             >;
         };
 
         sens_div4 {
             bindings = <
-                &ht_div4 0 0
+                &td_div4
             >;
         };
 
         sens_div8 {
             bindings = <
-                &ht_div8 0 0
+                &td_div8
             >;
         };
 
         sens_div16 {
             bindings = <
-                &ht_div16 0 0
+                &td_div16
             >;
         };
     };
