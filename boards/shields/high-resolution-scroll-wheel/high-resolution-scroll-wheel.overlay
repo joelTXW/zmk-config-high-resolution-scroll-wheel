@@ -98,7 +98,3 @@
     };
 };
 
-&leds {
-    status = "disabled";
-};
-
