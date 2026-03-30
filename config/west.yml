@@ -14,5 +14,8 @@ manifest:
     - name: zmk-driver-ams-as5600
       remote: joelTXW
       revision: main
+    - name: zmk-rgbled-widget
+      remote: joelTXW
+      revision: main
   self:
     path: config
