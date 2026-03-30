@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: joelTXW
       url-base: https://github.com/joelTXW
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -15,7 +17,7 @@ manifest:
       remote: joelTXW
       revision: main
     - name: zmk-rgbled-widget
-      remote: joelTXW
+      remote: caksoylar
       revision: main
   self:
     path: config
